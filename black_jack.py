@@ -38,9 +38,9 @@ def calculate_score(hand):
     return score
 
 
-# Function to display a hand (with flowers)
+# Function to display a deck/hand (with flowers)
 def display_hand(hand):
-    """Displays the hand as card values with flowers."""
+    """This area displays the hand as card values with its corresponding flowers."""
     return ', '.join([f"{card} of {suit}" for card, suit in hand])
 
 
