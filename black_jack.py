@@ -1,6 +1,9 @@
 import random
 import os
 
+_MESSAGE_WIN = "Congratulations!!! You win!!!"
+_MESSAGE_LOSE = "You lose. So Sorry."
+
 # flowers (Flowers) and Card values
 flowers = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
 card_numbers = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 10, 'Q': 10, 'K': 10,
@@ -50,13 +53,13 @@ def compare(player_score, ai_score):
     if player_score == ai_score:
         return "It's a draw! You got a tie!"
     elif ai_score == 0:
-        return "Computer has a Blackjack! You lose. So Sorry."
+        return "Computer has a Blackjack! "+_MESSAGE_LOSE
     elif player_score == 0:
-        return "You have a Blackjack! Congratulations!!!You win!!!"
+        return "You have a Blackjack! "+_MESSAGE_WIN
     elif player_score > 21:
-        return "You went over 21. You lose.So Sorry."
+        return "You went over 21. "+_MESSAGE_LOSE
     elif ai_score > 21:
-        return "Computer went over 21. Congratulations!!!You win!!!"
+        return "Computer went over 21. "+_MESSAGE_WIN
     elif player_score > ai_score:
         return "Congratulations!!!You win!!!"
     else:
