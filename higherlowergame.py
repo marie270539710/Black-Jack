@@ -23,6 +23,7 @@ def format_account(account):
     return f"{name}, a {description} from {country}"
 
 def play_game():
+    print("Welcome to Higher Lower Game!")
     score = 0
     account_a = get_random_account()
     account_b = get_random_account()
