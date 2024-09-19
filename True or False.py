@@ -66,7 +66,8 @@ def register_user():
 
 def play_game(user_id):
     num_questions = int(input("How many questions would you like to answer? (1-10): "))
-    num_questions = min(max(num_questions, 1), 10)  # Ensure number is between 1 and 10
+    # Ensure number is between 1 and 10
+    num_questions = min(max(num_questions, 1), 10)  
 
     score = 0
     random.shuffle(question_data)
