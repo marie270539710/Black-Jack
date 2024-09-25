@@ -1,0 +1,46 @@
+import turtle
+import random
+
+# Set up the turtle screen
+screen = turtle.Screen()
+screen.title("Broken Lines using Turtle")
+screen.bgcolor("blue")
+
+
+# Create a turtle object
+t = turtle.Turtle()
+t.speed(5)  # Fastest drawing speed
+t.pensize(2)
+t.shape("turtle")
+
+# Function to draw a broken line
+def draw_broken_line(length, segments):
+    for _ in range(segments):
+        # Draw a line segment
+        t.forward(length / segments)
+
+        # Move the turtle without drawing
+        t.penup()
+        t.forward(length / (2 * segments))
+        t.pendown()
+
+
+# Main drawing loop
+for _ in range(10):  # Draw 10 broken lines
+    # Random starting position
+    t.penup()
+    t.goto(random.randint(-200, 200), random.randint(-200, 200))
+    t.pendown()
+
+    # Random color
+    t.color(random.random(), random.random(), random.random())
+
+    # Random angle
+    t.setheading(random.randint(0, 360))
+
+    # Draw a broken line
+    draw_broken_line(200, 10)
+
+# Hide the turtle and display the result
+t.hideturtle()
+screen.exitonclick()
