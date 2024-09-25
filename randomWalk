@@ -1,0 +1,60 @@
+import turtle
+import random
+
+# Set up the turtle screen
+screen = turtle.Screen()
+screen.title("Random Walk (Up, Down, Left, Right) with Changing Colors")
+screen.bgcolor("white")
+screen.setup(600, 600)  # Set the window size
+
+# Create a turtle object
+t = turtle.Turtle()
+#t.speed(0)  # Fastest drawing speed
+t.pensize(10)
+t.shape("turtle")
+
+# Hide the turtle cursor
+#t.hideturtle()
+
+
+# Function to generate a random color
+def random_color():
+    return (random.random(), random.random(), random.random())
+
+
+# Function to take a random step (up, down, left, or right)
+def random_step():
+    direction = random.choice(["up", "down", "left", "right"])
+    step_size = 20  # Fixed step size
+
+    if direction == "up":
+        t.setheading(90)
+    elif direction == "down":
+        t.setheading(270)
+    elif direction == "left":
+        t.setheading(180)
+    else:  # right
+        t.setheading(0)
+
+    t.forward(step_size)
+
+
+# Main drawing loop
+steps = 5000  # Number of steps in the random walk
+
+for _ in range(steps):
+    # Set a random color for each step
+    t.color(random_color())
+
+    # Take a random step
+    random_step()
+
+    # Check if the turtle is near the edge of the screen
+    if abs(t.xcor()) > 380 or abs(t.ycor()) > 280:
+        # If near the edge, move back to the center
+        t.penup()
+        t.goto(0, 0)
+        t.pendown()
+
+# Keep the window open until it's clicked
+screen.exitonclick()
