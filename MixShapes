@@ -1,0 +1,64 @@
+import turtle
+import math
+
+# Set up the turtle screen
+screen = turtle.Screen()
+screen.title("Regular Polygons from Central Point")
+screen.bgcolor("white")
+
+# Create a turtle object
+t = turtle.Turtle()
+t.speed(0)  # Fastest drawing speed
+t.pensize(2)
+t.shape("turtle")
+
+# Colors for each shape
+colors = ["red", "blue", "yellow", "red", "blue", "yellow", "red"]
+
+
+# Function to draw a regular polygon
+def draw_polygon(sides, length):
+    angle = 360 / sides
+    for _ in range(sides):
+        t.forward(length)
+        t.left(angle)
+    t.setheading(0)  # Reset heading to 0 degrees
+
+# List of polygons to draw
+polygons = [
+    ("Triangle", 3),
+    ("Pentagon", 5),
+    ("Hexagon", 6),
+    ("Heptagon", 7),
+    ("Octagon", 8),
+    ("Nonagon", 9),
+    ("Decagon", 10)
+]
+
+# Calculate the side length based on the largest polygon
+max_sides = max(polygon[1] for polygon in polygons)
+radius = 200  # Adjust this value to change the overall size
+side_length = 2 * radius * math.sin(math.pi / max_sides)
+
+# Move to the starting point
+t.penup()
+t.goto(0, -radius)
+t.pendown()
+
+# Draw each polygon
+for i, (name, sides) in enumerate(polygons):
+    t.color(colors[i % len(colors)])
+    draw_polygon(sides, side_length)
+
+    # Write the name of the polygon
+    angle = 360 / sides / 2  # Angle to the middle of the first side
+    label_distance = (side_length / 2) / math.cos(math.radians(angle))
+    t.penup()
+    t.forward(label_distance)
+    #t.write(name, align="center", font=("Arial", 12, "normal"))
+    t.backward(label_distance)
+    t.pendown()
+
+# Hide the turtle and display the result
+t.hideturtle()
+screen.exitonclick()
